@@ -8,6 +8,7 @@ import GroupsPage from './js/GroupsPage';
 import Home from './js/Home';
 
 function App() {
+  
   return (
     
     <Router>

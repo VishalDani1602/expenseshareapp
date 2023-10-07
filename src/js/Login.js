@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import  { useEffect } from 'react';
 import { Link,useNavigate  } from 'react-router-dom'; 
 import axios from '../axios';
 
@@ -10,6 +11,14 @@ function Login() {
 
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+
+    if (token) {
+      navigate('/home');
+    }
+  });
+
   const handleLogin = async (e) => {
     e.preventDefault();
 
@@ -20,7 +29,7 @@ function Login() {
 
       if (loginResult !== 0) {
         localStorage.setItem('token', loginResult);
-        navigate('/groups');
+        navigate('/home');
         console.log('Login successful');
         
       } else {

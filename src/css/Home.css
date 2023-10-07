@@ -1,4 +1,15 @@
   .welcome-text {
     text-align: center;
   }
+  .centered-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+  }
+  
+  .centered-image {
+    width: 800px;
+    height: 500px;
+  }
   

@@ -2,9 +2,21 @@ import React , { useState } from 'react';
 import GroupList from './GroupList';
 import CreateGroupModal from './CreateGroupModal';
 import NavigationMenu from './NavigationMenu';
+import  { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../css/GroupsPage.css';
 
 function GroupsPage() {
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+
+    if (!token) {
+      navigate('/login');
+    }
+  });
 
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [groups, setGroups] = useState([]);

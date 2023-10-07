@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import { useEffect } from 'react';
 import { Link,useNavigate } from 'react-router-dom';
 import axios from '../axios';
 import '../css/Signup.css';
@@ -9,6 +9,14 @@ function Signup() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+
+    if (token) {
+      navigate('/home');
+    }
+  }); 
 
   const handleSignup = (e) => {
     e.preventDefault();
