@@ -22,6 +22,7 @@ function Signup() {
     e.preventDefault();
     
       if (password !== confirmPassword) {
+        window.alert('Passwords do not match');
         console.error('Passwords do not match');
         return;
       }

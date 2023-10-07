@@ -38,6 +38,7 @@ function Login() {
         console.log('Login successful');
         
       } else {
+        window.alert('Invalid Username or Password');
         console.log('Login failed');
         
       }
