@@ -4,8 +4,6 @@
     padding: 20px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     text-align: center;
-    margin: 0 auto;
-    margin-top: 10vh; 
   }
   
   form {
@@ -45,9 +43,3 @@
     background-color: #0056b3;
   }
   
-  .error-message {
-    color: red;
-    font-size: 14px;
-    margin-top: 10px;
-    /* You can customize the styles as needed */
-  }
