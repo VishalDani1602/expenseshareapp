@@ -1,0 +1,8 @@
+.my-component {
+    position: relative;
+  }
+.open-modal-button {
+    position: absolute;
+    right: 20px; 
+    z-index: 9999;
+  }

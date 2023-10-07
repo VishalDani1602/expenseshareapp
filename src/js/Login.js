@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link,useNavigate  } from 'react-router-dom'; 
-import axios from './axios';
+import axios from '../axios';
 
-import './Login.css';
+import '../css/Login.css';
 
 function Login() {
   const [username, setUsername] = useState('');
@@ -19,6 +19,8 @@ function Login() {
       console.log(loginResult);
 
       if (loginResult !== 0) {
+        localStorage.setItem('token', loginResult);
+        navigate('/groups');
         console.log('Login successful');
         
       } else {
@@ -34,12 +36,12 @@ function Login() {
 
 
   return (
-    <div className="container">
+    <div className="login-container">
       <form onSubmit={(event) => handleLogin(event)}>
         <h2>Login</h2>
-        <label htmlFor="email">Username:</label>
+        <label htmlFor="username">Username:</label>
         <input
-          type="username"
+          type="text"
           id="username"
           name="username"
           value={username}
@@ -57,7 +59,7 @@ function Login() {
         />
         <button type="submit">Login</button>
       </form>
-      <p>Don't have an account? <Link to="/signup">Signup</Link></p>
+      <p>Not Registered? <Link to="/signup">Signup</Link></p>
     </div>
   );
 }

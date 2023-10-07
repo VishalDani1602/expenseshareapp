@@ -1,0 +1,39 @@
+.group-list {
+  background-color: #fff;
+  width: 50%;
+  margin: 20px auto;
+  padding: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  text-align: left;
+}
+
+h2 {
+  margin-bottom: 30px;
+  font-size: 24px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.group-item {
+  background-color: #f4f4f4;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  font-size: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: left; 
+}
+
+.create-group-button {
+  background-color: navy;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 18px;
+}

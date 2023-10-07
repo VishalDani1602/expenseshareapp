@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import './Signup.css';
-import { Link,useNavigate } from 'react-router-dom';
-import axios from './axios';
 
+import { Link,useNavigate } from 'react-router-dom';
+import axios from '../axios';
+import '../css/Signup.css';
 
 function Signup() {
   const [email, setEmail] = useState('');
@@ -26,12 +26,12 @@ function Signup() {
   };
 
   return (
-    <div className="container">
+    <div className="signup-container">
       <form onSubmit={handleSignup}>
         <h2>Signup</h2>
         <label htmlFor="email">Email:</label>
         <input
-          type="email"
+          type="text"
           id="email"
           name="email"
           value={email}
@@ -58,7 +58,7 @@ function Signup() {
         />
         <button type="submit">Signup</button>
       </form>
-      <p>Already have an account? <Link to="/login">Login</Link></p> {/* Link to the login page */}
+      <p>Already Registered? <Link to="/login">Login</Link></p>
 
     </div>
   );

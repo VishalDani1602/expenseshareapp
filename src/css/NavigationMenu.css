@@ -1,0 +1,30 @@
+.navigation-menu {
+    background-color: cyan;
+    padding: 20px;
+    color: #fff;
+    border-bottom: 2px solid navy;
+  }
+  
+  .navigation-menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+  }
+  
+  .navigation-menu li {
+    margin-right: 30px;
+  }
+  
+  .navigation-menu a {
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+    transition: color 0.3s;
+  }
+  
+  .navigation-menu a:hover {
+    color: gray;
+  }
+  
