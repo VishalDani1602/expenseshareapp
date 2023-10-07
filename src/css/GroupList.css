@@ -19,13 +19,14 @@ ul {
 
 .group-item {
   background-color: #f4f4f4;
-  padding: 10px;
-  margin-bottom: 10px;
+  padding: 20px;
+  margin-bottom: 15px;
   border-radius: 4px;
-  font-size: 18px;
+  font-size: 22px;
   display: flex;
   justify-content: space-between;
   align-items: left; 
+  font-weight: 500;
 }
 
 .create-group-button {
@@ -36,4 +37,24 @@ ul {
   border-radius: 4px;
   cursor: pointer;
   font-size: 18px;
+}
+
+.button-view{
+  background-color: rgb(122, 200, 226);
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.button-add{
+  background-color: rgb(99, 224, 99);
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
 }

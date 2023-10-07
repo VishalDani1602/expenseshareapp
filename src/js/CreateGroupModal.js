@@ -6,6 +6,11 @@ function CreateGroupModal({ isOpen, onClose, onGroupCreated }) {
   const [groupName, setGroupName] = useState('');
 
   const handleCreateGroup = () => {
+
+    console.log(groupName.length);
+    if(groupName.length === 0){
+      window.alert('Group name should not be empty.');
+    }else{
     
     axios
       .post('/groups/create', { "name": groupName , "creatorId" : localStorage.getItem('token')}) 
@@ -15,6 +20,7 @@ function CreateGroupModal({ isOpen, onClose, onGroupCreated }) {
       .catch((error) => {
         console.error('Error creating group:', error);
       });
+    }
   };
 
   return (
@@ -25,7 +31,8 @@ function CreateGroupModal({ isOpen, onClose, onGroupCreated }) {
           type="text"
           placeholder="Group Name"
           value={groupName}
-          onChange={(e) => setGroupName(e.target.value)}
+          onChange={(e) => setGroupName(e.target.value)
+          }
         />
         <button onClick={handleCreateGroup}>Submit</button>
         <button onClick={onClose}>Close</button>

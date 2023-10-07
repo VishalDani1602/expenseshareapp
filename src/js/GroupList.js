@@ -23,6 +23,10 @@ function GroupList() {
         {groups.map((group) => (
           <li key={group.groupId} className="group-item">
             {group.name}
+            <div className="button-container">
+        <button className="button-view">View</button>
+        <button className="button-add">Add Expense</button>
+      </div>
           </li>
         ))}
       </ul>

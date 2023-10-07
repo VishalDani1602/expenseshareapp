@@ -29,6 +29,11 @@ function Login() {
 
       if (loginResult !== 0) {
         localStorage.setItem('token', loginResult);
+        const userResponse = await axios.get('/users/'+loginResult);
+        const userResponseResult = userResponse.data;
+        if(userResponseResult){
+          localStorage.setItem('UserEmail',userResponseResult.email);
+        }
         navigate('/home');
         console.log('Login successful');
         

@@ -17,9 +17,8 @@ function NavigationMenu() {
           <Link to="/groups">Groups</Link>
         </li>
         <li>
-          <Link to="/login" onClick={handleLogout}>Logout</Link> 
+          <Link to="/login" onClick={handleLogout}>Logout ({localStorage.getItem('UserEmail')})</Link> 
         </li>
-      
       </ul>
     </div>
   );
