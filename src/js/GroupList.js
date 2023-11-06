@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from '../axios';
 import '../css/GroupList.css';
 import CreateExpenseModal from './CreateExpenseModal';
+import { Link } from 'react-router-dom';
 
 function GroupList() {
   const [groups, setGroups] = useState([]);
@@ -38,7 +39,8 @@ function GroupList() {
           <li key={group.groupId} className="group-item">
             {group.name}
             <div className="button-container">
-              <button className="button-view" >View</button>
+            
+              <button className="button-view"><Link to={`/group-expense/${group.groupId}`}>View Expenses</Link></button>
               <button className="button-add" onClick={() => openModal(group)}>Add Expense</button>
             </div>
           </li>

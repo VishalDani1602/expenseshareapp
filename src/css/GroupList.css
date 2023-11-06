@@ -58,3 +58,27 @@ ul {
     cursor: pointer;
     margin-right: 10px;
 }
+.group-expenses {
+  margin-top: 10px; /* Add spacing at the top of the group expenses */
+  padding: 10px;
+  background-color: #f4f4f4;
+  border-radius: 4px;
+}
+
+.group-expenses h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.group-expenses ul {
+  list-style: none;
+  padding: 0;
+}
+
+.group-expenses li {
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+
+/* Other existing styles remain unchanged */

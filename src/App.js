@@ -6,6 +6,7 @@ import Signup from './js/Signup';
 import Header from './js/Header';
 import GroupsPage from './js/GroupsPage';
 import Home from './js/Home';
+import GroupExpenseList from './js/GroupExpenseList';
 
 function App() {
   
@@ -20,6 +21,7 @@ function App() {
           <Route path="/" element={<Home />}/>
           <Route path="/home" element={<Home />}/>
           <Route path="/groups" element={<GroupsPage />}/>
+          <Route path="/group-expense/:groupId" element={<GroupExpenseList/>} />
           </Routes > 
       </div>
     </Router>

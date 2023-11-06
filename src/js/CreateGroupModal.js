@@ -13,7 +13,11 @@ function CreateGroupModal({ isOpen, onClose, onGroupCreated }) {
     }else{
     
     axios
-      .post('/groups/create', { "name": groupName , "creatorId" : localStorage.getItem('token')}) 
+      .post('/groups/create',{
+        "name": groupName,
+        "user": {
+          "userId": localStorage.getItem('token')
+        }}) 
       .then((response) => {
         onClose();
       })
