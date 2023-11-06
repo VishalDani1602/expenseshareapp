@@ -3,6 +3,7 @@ import axios from '../axios';
 import NavigationMenu from './NavigationMenu';
 import {useParams, useNavigate} from 'react-router-dom';
 import '../css/GroupList.css';
+import UserListModal from './UserListModal';
 
 function GroupExpenseList() {
   const [expenses, setExpenses] = useState([]);
@@ -24,22 +25,39 @@ function GroupExpenseList() {
         });
   }}, [selectedGroup]);
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    window.location.reload();
+  };
   return (
     
     <div>
       <NavigationMenu />
+      <br></br>
+      <button className="open-modal-button" onClick={openModal}>
+        Add members
+      </button>
       <div  className="group-list">
       <ul>
         {expenses.map((expense) => (
           <li key={expense.expenseId} className="group-item">
             {expense.description}
             <div className="button-container">
+              {expense.amount}
             </div>
           </li>
         ))}
       </ul>
       </div>
+      <UserListModal isOpen={isModalOpen} onClose={closeModal} />
     </div>
+    
   );
 }
 
