@@ -7,15 +7,34 @@ import UserListModal from './UserListModal';
 
 function GroupExpenseList() {
   const [expenses, setExpenses] = useState([]);
-  let selectedGroup = useParams([]);
+  const [Userexpense, setUserExpenses] = useState([]);
+  const [EUsers, setUsers] = useState([]);
+  const {groupId} = useParams([]);
   const navigate = useNavigate();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+
+  const openModal = () => {
+    setIsModalOpen(true);
+    console.log('opened');
+    console.log(isModalOpen);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    console.log('clossed');
+    console.log(isModalOpen);
+    //window.location.reload();
+  };
   useEffect(() => {
     const token = localStorage.getItem('token');
-
+  
     if (!token) {
       navigate('/login');
-    }else{
-      axios.get('/expense/'+selectedGroup.groupId)
+    } else {
+      console.log(groupId);
+      axios.get('/expense/' + groupId)
         .then((response) => {
           console.log(response.data);
           setExpenses(response.data);
@@ -23,41 +42,61 @@ function GroupExpenseList() {
         .catch((error) => {
           console.error('Error fetching data:', error);
         });
-  }}, [selectedGroup]);
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
+        axios.get('/expense/exp', {
+          params: {
+            groupId: groupId,
+            userId: localStorage.getItem('token')
+          }
+        })
+          .then((response) => {
+            console.log(response.data);
+            setUserExpenses(response.data);
+          })
+          .catch((error) => {
+            console.error('Error fetching data:', error);
+          });
+  
+      axios.get('/users/')
+        .then((response) => {
+          console.log(response.data);
+          setUsers(response.data);
+          setLoading(false); // Data has been loaded, set loading to false
+        })
+        .catch((error) => {
+          console.error('Error fetching user list:', error);
+        });
+    }
+  }, [groupId,navigate]);
+  
 
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-    window.location.reload();
-  };
+  
   return (
-    
     <div>
       <NavigationMenu />
       <br></br>
       <button className="open-modal-button" onClick={openModal}>
         Add members
       </button>
-      <div  className="group-list">
-      <ul>
-        {expenses.map((expense) => (
-          <li key={expense.expenseId} className="group-item">
-            {expense.description}
-            <div className="button-container">
-              {expense.amount}
-            </div>
-          </li>
-        ))}
-      </ul>
-      </div>
-      <UserListModal isOpen={isModalOpen} onClose={closeModal} />
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <div className="group-list">
+          <ul>
+            {expenses.map((expense) => (
+              <li key={expense.expenseId} className="group-item">
+                {expense.description}
+                <div className="button-container">{expense.amount}</div>
+              </li>
+            ))}
+          </ul>
+          {Userexpense}
+        </div>
+      )}
+      {EUsers !== null ? (
+        <UserListModal isOpen={isModalOpen} onClose={closeModal} EUsers={EUsers} />
+      ) : null}
     </div>
-    
   );
 }
 

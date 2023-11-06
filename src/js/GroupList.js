@@ -20,7 +20,7 @@ function GroupList() {
       .catch((error) => {
         console.error('Error fetching data:', error);
       });
-  }, []);
+  }, [token]);
 
   const openModal = (group) => {
     setShowModal(true);

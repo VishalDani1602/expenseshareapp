@@ -1,40 +1,30 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from '../axios';
-import '../css/UserListModal.css';
+import '../css/CreateGroupModal.css';
 import { useParams } from 'react-router-dom';
 
-function UserListModal({ isOpen, onClose }) {
-  const [users, setUsers] = useState([]);
-  let selectedGroup = useParams([]);
-  useEffect(() => {
-    // Fetch the list of users when the modal is opened
-    if (isOpen) {
-      axios.get('/users/')
-        .then((response) => {
-          setUsers(response.data);
-        })
-        .catch((error) => {
-          console.error('Error fetching user list:', error);
-        });
-    }
-  }, [isOpena]);
+function UserListModal({ isOpen, onClose, EUsers }) {
+  const [groupName, setGroupName] = useState('');
+  const { groupId } = useParams([]);
 
-  const handleSendRequest = (userId) => {
-    axios.post('/groups/add', {
-        "user": {
-          "userId": userId
+  const handleUserClick = (user) => {
+    // You can call the axios method or perform any other action when a user is clicked.
+    console.log('User clicked:', user);
+    axios
+      .post('/groups/add', {
+        user: {
+          userId: user.userId,
         },
-        "group": {
-          "groupId": selectedGroup.groupId
-        }
+        group: {
+          groupId: groupId,
+        },
       })
-    .then((response) => {
-      // Handle the response as needed
-      console.log('POST request successful');
-    })
-    .catch((error) => {
-      console.error('Error sending POST request:', error);
-    });
+      .then((response) => {
+        onClose();
+      })
+      .catch((error) => {
+        console.error('Error adding user', error);
+      });
   };
 
   return (
@@ -42,14 +32,9 @@ function UserListModal({ isOpen, onClose }) {
       <div className="modal-content">
         <h2>User List</h2>
         <ul>
-          {users.map((user) => (
-            <li key={user.userId}>
-              <div
-                className="clickable-list-item"
-                onClick={() => handleSendRequest(user.userId)}
-              >
-                {user.email}
-              </div>
+          {EUsers.map((user) => (
+            <li key={user.userId} className="user-item">
+              <div onClick={() => handleUserClick(user)}>{user.email}</div>
             </li>
           ))}
         </ul>
