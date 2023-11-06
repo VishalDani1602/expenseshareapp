@@ -17,7 +17,7 @@ function UserListModal({ isOpen, onClose }) {
           console.error('Error fetching user list:', error);
         });
     }
-  }, [isOpen]);
+  }, [isOpena]);
 
   const handleSendRequest = (userId) => {
     axios.post('/groups/add', {
